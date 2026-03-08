@@ -1,11 +1,17 @@
-# scripts
+# Setup Scripts
 
-Stuff I want available everywhere.
+A collection of personal automation scripts for quickly provisioning environments, tools, and configurations.
 
-One command.
-Temporary setups.
-Clean exit.
+## Available Scripts
 
-Run:
+### `nvim`
+Bootstraps a complete, portable Neovim configuration.
 ```sh
-curl -sL https://Shanu-Kumawat.github.io/<script> | sh
+curl -fsSL https://shanu-kumawat.github.io/nvim | bash
+```
+
+### `class/setup.sh`
+Configures a fresh Arch Linux WSL environment with modern developer tools (zsh, neovim, Node.js, Python, Git), themes, and custom configuration.
+```sh
+curl -fsSL https://shanu-kumawat.github.io/class/setup.sh | bash
+```
