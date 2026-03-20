@@ -315,8 +315,19 @@ if [ "$OS" = "Linux" ] || [[ "${setup_git,,}" == "y" ]]; then
         fmt_ok "GitHub CLI already authenticated."
     else
         if [ -t 0 ]; then
-            fmt_info "Authenticating GitHub CLI..."
-            gh auth login --scopes admin:public_key
+            if [ "$OS" = "Linux" ]; then
+                read -p "Do you want to setup GitHub CLI (gh) now? [y/N]: " setup_gh
+                setup_gh=${setup_gh:-n}
+            else
+                setup_gh="y"
+            fi
+
+            if [[ "${setup_gh,,}" == "y" ]]; then
+                fmt_info "Authenticating GitHub CLI..."
+                gh auth login --scopes admin:public_key
+            else
+                fmt_info "Skipping GitHub CLI authentication."
+            fi
         else
             fmt_warn "Script is running non-interactively. Run 'gh auth login' later."
         fi
